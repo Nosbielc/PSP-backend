@@ -77,3 +77,4 @@ typings/
 .settings/
 *.sublime-workspace
 .v8flags-1-5.1.281.111.d41d8cd98f00b204e9800998ecf8427e.json
+package-lock.json
