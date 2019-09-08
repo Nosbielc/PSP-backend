@@ -59,3 +59,21 @@ typings/
 
 # next.js build output
 .next
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.v8flags-1-5.1.281.111.d41d8cd98f00b204e9800998ecf8427e.json
