@@ -1,6 +1,7 @@
 export const URLs = {
-    "LIST_TRANSACOES" : "/api/v1/list",
-    "AUTH_ALL": "/*"
+    "PSP" : "/api/v1/psp",
+    "TRANSACTION" : "/api/v1/transacion",
+    "PAYABLE" : "/api/v1/payable"
 };
 
 export const tMsg = {//Tipos de mensagens

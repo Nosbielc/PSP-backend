@@ -10,7 +10,7 @@ import * as cors from "cors";
 import { FactoryDB } from "./util/FactoryDB";
 
 // Módulos
-import RegistraRest from "./app/controller/PSPRest";
+import PSPRest from "./app/controller/PSPRest";
 
 class App {
     public exp: express.Application;
@@ -50,7 +50,7 @@ class App {
     }
 
     private initRoutes(){
-        RegistraRest.setRoutes(this.exp)
+        PSPRest.setRoutes(this.exp)
     }
 
     getSequelize() {

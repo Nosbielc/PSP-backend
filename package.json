@@ -48,6 +48,7 @@
     "sequelize-typescript": "0.6.0",
     "shuffle-array": "1.0.1",
     "socket.io": "2.0.3",
+    "string-mask": "^0.3.0",
     "url": "0.11.0"
   },
   "devDependencies": {
