@@ -1,6 +1,6 @@
 export const URLs = {
     "PSP" : "/api/v1/psp",
-    "TRANSACTION" : "/api/v1/transacion",
+    "TRANSACTION" : "/api/v1/transaction",
     "PAYABLE" : "/api/v1/payable"
 };
 

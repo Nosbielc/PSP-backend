@@ -11,6 +11,8 @@ import { FactoryDB } from "./util/FactoryDB";
 
 // Módulos
 import PSPRest from "./app/controller/PSPRest";
+import TransactionRest from "./app/controller/TransactionRest";
+import PayableRest from "./app/controller/PayableRest";
 
 class App {
     public exp: express.Application;
@@ -50,7 +52,9 @@ class App {
     }
 
     private initRoutes(){
-        PSPRest.setRoutes(this.exp)
+        PSPRest.setRoutes(this.exp);
+        TransactionRest.setRoutes(this.exp);
+        PayableRest.setRoutes(this.exp);
     }
 
     getSequelize() {
