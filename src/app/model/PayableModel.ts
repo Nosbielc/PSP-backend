@@ -1,4 +1,6 @@
-import {Column, DataType, ForeignKey, Model, Table} from "sequelize-typescript";
+import {Column, DataType, Model, Table} from "sequelize-typescript";
+import { BelongsTo } from "sequelize-typescript/lib/annotations/association/BelongsTo";
+import { ForeignKey } from "sequelize-typescript/lib/annotations/ForeignKey";
 import {Transaction} from "./TransactionModel";
 
 @Table({tableName: "payable"})
@@ -37,6 +39,9 @@ export class Payable extends Model<Payable> {
 
     @ForeignKey(() => Transaction)
     @Column({comment : 'Transação registrada.'})
-    transactionId: number
+    transactionId: number;
+
+    @BelongsTo(() => Transaction)
+    transaction: Transaction;
 
 }

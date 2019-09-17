@@ -1,6 +1,7 @@
-import {Column, Model, Table} from "sequelize-typescript";
+import {BelongsTo, Column, Model, Table} from "sequelize-typescript";
 import { CreatedAt } from 'sequelize-typescript/lib/annotations/CreatedAt';
 import { DataType } from 'sequelize-typescript/lib/enums/DataType';
+import {Payable} from "./PayableModel";
 
 @Table({tableName: "transaction"})
 export class Transaction extends Model<Transaction> {
