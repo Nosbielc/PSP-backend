@@ -8,6 +8,7 @@ import PayableService from "./PayableService";
 import {Payable} from "../model/PayableModel";
 import {Column} from "sequelize-typescript"; //https://date-fns.org/
 import * as crypto from 'crypto';
+import {Client} from "../model/ClientModel";
 
 class PSPService {
 
@@ -25,6 +26,7 @@ class PSPService {
             req.assert('bearerName', msgPSP.erroParamBodyBearerNameRequired).notEmpty();
             req.assert('dtExpiration', msgPSP.erroParamBodyDtExpirationRequired).notEmpty();
             req.assert('cvv', msgPSP.erroParamBodyCVVRequired).notEmpty();
+            req.assert('clientId', msgPSP.erroParamBodyClientIdRequired).notEmpty().isNumeric()
 
              let errors = req.validationErrors();
 
@@ -43,6 +45,16 @@ class PSPService {
                 res.status(400).send(data);
                 return
             }
+            // - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _
+
+            let client = await Client.findById(bodyRequest.clientId);
+
+            if (!client) {
+                data.addMsgError(tMsg.DANGER, msgPSP.erroProcessRecordPSP, "Cliente desconhecido.");
+                res.status(400).send(data);
+                return
+            }
+
             // - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _ - _
 
             //Resolvendo questão de segurança do numero
@@ -86,7 +98,8 @@ class PSPService {
                 'dtPayment': dtPayment,
                 'percentRate': percentRate,
                 'vlrPayable': vlrPayable,
-                'hashTransaction' : hashTransaction
+                'hashTransaction' : hashTransaction,
+                'clientId' : client.id
             });
 
             //result.numCard = numCard;//

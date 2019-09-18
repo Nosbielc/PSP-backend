@@ -1,6 +1,7 @@
 import { Sequelize } from "sequelize-typescript";
 import {Transaction} from "../app/model/TransactionModel";
 import {Payable} from "../app/model/PayableModel";
+import {Client} from "../app/model/ClientModel";
 
 export class FactoryDB{
     
@@ -51,7 +52,8 @@ export class FactoryDB{
         //Adicionando os modelos que serão espelhados como tabelas no banco de dados.
         this.sequelize.addModels([
             Transaction,
-            Payable
+            Payable,
+            Client
         ]);
         
         this.sequelize.authenticate().then(onConnected).catch(onError);

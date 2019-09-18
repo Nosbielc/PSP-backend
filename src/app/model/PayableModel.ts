@@ -2,10 +2,13 @@ import {Column, DataType, Model, Table} from "sequelize-typescript";
 import { BelongsTo } from "sequelize-typescript/lib/annotations/association/BelongsTo";
 import { ForeignKey } from "sequelize-typescript/lib/annotations/ForeignKey";
 import {Transaction} from "./TransactionModel";
+import {Client} from "./ClientModel";
+import {Sequelize} from "sequelize";
+import * as sequelize from "sequelize";
 
 @Table({tableName: "payable"})
 export class Payable extends Model<Payable> {
-    static sequelize: any;
+    //static sequelize: any;
 
     @Column({
         type : DataType.ENUM,
@@ -29,6 +32,7 @@ export class Payable extends Model<Payable> {
     percentRate: number;
 
     @Column({
+        type: DataType.FLOAT,
         allowNull: false,
         comment: "Valor da Transação final do cliente"
     })
@@ -43,5 +47,12 @@ export class Payable extends Model<Payable> {
 
     @BelongsTo(() => Transaction)
     transaction: Transaction;
+
+    @ForeignKey(() => Client)
+    @Column({comment : 'Cliente da transação.'})
+    clientId: number;
+
+    @BelongsTo(() => Client)
+    client: Client;
 
 }

@@ -1,13 +1,13 @@
-import {BelongsTo, Column, Model, Table} from "sequelize-typescript";
+import {BelongsTo, Column, HasOne, Model, Table} from "sequelize-typescript";
 import { CreatedAt } from 'sequelize-typescript/lib/annotations/CreatedAt';
 import { DataType } from 'sequelize-typescript/lib/enums/DataType';
 import {Payable} from "./PayableModel";
+import * as sequelize from "sequelize";
 
 @Table({tableName: "transaction"})
 export class Transaction extends Model<Transaction> {
-    static sequelize: any;
 
-    @Column({ allowNull: false, comment: 'Valor da Transação' })
+    @Column({ type: DataType.FLOAT, allowNull: false, comment: 'Valor da Transação' })
     vlrTransaction: number;
 
     @Column({ allowNull: false, comment: 'Descrição da transação. Ex: Smartband XYZ 3.0 '})
@@ -31,4 +31,7 @@ export class Transaction extends Model<Transaction> {
     @CreatedAt
     @Column( { allowNull: false, comment : 'Data da entrada do registro'} )
     dtCreated: Date;
+
+    @HasOne( () => Payable)
+    payable : Payable;
 }
