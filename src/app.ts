@@ -44,6 +44,7 @@ class App {
 
     private middlewares(){
         this.exp.use(morgan("dev"));
+        //this.exp.use(morgan(':method :url :response-time'));
         this.exp.use(bodyParser.json());
         this.exp.use(bodyParser.urlencoded({extended: true}));
         this.exp.use(expressValidator());

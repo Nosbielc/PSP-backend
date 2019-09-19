@@ -62,7 +62,7 @@ export class FactoryDB{
 
     updateTable(onUpdate: any, onError: any){
         if(this.sequelize){
-            this.sequelize.sync({force: true, alter: true }).then(onUpdate).catch(onError);
+            this.sequelize.sync({force: false, alter: false , logging : true}).then(onUpdate).catch(onError);
         }
     }
 

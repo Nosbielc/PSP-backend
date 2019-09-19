@@ -1,4 +1,3 @@
-import { Sequelize } from 'sequelize-typescript';
 import App from "./app";
 import * as debugServe from "debug";
 
@@ -8,10 +7,9 @@ App.server.listen(port, () => {
     console.log("Servidor está rodando na porta "+ port);
     App.createConnection(() => {
         console.log("Banco conectado com sucesso!");
-
         /**
          * As linhas abaixo fazem o processo de atualização do banco de dados
-         * não deixe essa configuração em producao. att.Cleibso Gomes
+         * não deixe essa configuração em producao. att.Cleibson Gomes
          */
         //TODO resolver este problema usando as configurações de ambiente
         App.updateTable(() => {

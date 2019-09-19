@@ -3,6 +3,7 @@ import {Data} from "../../util/Data";
 import {msgErro, msgPSP} from "../../util/MessageTranslate";
 import {Payable} from "../model/PayableModel";
 import {Client} from "../model/ClientModel";
+import {Transaction} from "../model/TransactionModel";
 
 class PayableService {
 
@@ -18,7 +19,10 @@ class PayableService {
             result.waitingFunds = (waitingFunds).toLocaleString('pt-BR',
                 { style: 'currency', currency: 'BRL' });
 
-            result.payables = await Payable.findAll();
+            result.payables = await Payable.findAll({
+                    include : [ { model : Transaction, as : 'transaction' } ]
+                });
+
             data.obj = result;
             res.status(200).json(data);
         }  catch (error) {
@@ -51,9 +55,10 @@ class PayableService {
                 { style: 'currency', currency: 'BRL' });
 
             result.payables = await Payable.findAll({
-                where : { clientId : client.id}
+                where : { clientId : client.id},
+                include : [ { model : Transaction, as : 'transaction' } ]
             });
-            
+
             data.obj = result;
             res.status(200).json(data);
         }  catch (error) {
