@@ -4,9 +4,7 @@ import {msgErro, msgPSP} from "../../util/MessageTranslate";
 import * as StringMask from 'string-mask';
 import {Transaction} from "../model/TransactionModel";
 import * as dateFns from 'date-fns';
-import PayableService from "./PayableService";
 import {Payable} from "../model/PayableModel";
-import {Column} from "sequelize-typescript"; //https://date-fns.org/
 import * as crypto from 'crypto';
 import {Client} from "../model/ClientModel";
 
@@ -26,7 +24,7 @@ class PSPService {
             req.assert('bearerName', msgPSP.erroParamBodyBearerNameRequired).notEmpty();
             req.assert('dtExpiration', msgPSP.erroParamBodyDtExpirationRequired).notEmpty();
             req.assert('cvv', msgPSP.erroParamBodyCVVRequired).notEmpty();
-            req.assert('clientId', msgPSP.erroParamBodyClientIdRequired).notEmpty().isNumeric()
+            req.assert('clientId', msgPSP.erroParamBodyClientIdRequired).notEmpty().isNumeric();
 
              let errors = req.validationErrors();
 

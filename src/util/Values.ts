@@ -2,7 +2,8 @@ export const URLs = {
     "PSP" : "/api/v1/psp",
     "TRANSACTION" : "/api/v1/transaction",
     "PAYABLE" : "/api/v1/payable",
-    "PAYABLE_CLIENT_ID" : "/api/v1/payable/:clientId"
+    "PAYABLE_CLIENT_ID" : "/api/v1/payable/:clientId",
+    "CLIENT" : "/api/v1/client"
 };
 
 export const tMsg = {//Tipos de mensagens

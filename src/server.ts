@@ -1,5 +1,6 @@
 import App from "./app";
 import * as debugServe from "debug";
+import {Client} from "./app/model/ClientModel";
 
 let port = process.env.PORT || "3000";
 let debug = debugServe("nodestr:server");
@@ -19,6 +20,7 @@ App.server.listen(port, () => {
         })
     }, (error) => {
         console.log("Error ao conectar ao banco de dados: " + error);
+        process.exit(0); // Ainda em desenvolvimento
     });
 });
 

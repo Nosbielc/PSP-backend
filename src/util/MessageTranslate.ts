@@ -13,3 +13,8 @@ export const msgPSP = {
     "erroParamBodyCVVRequired" : "ERRO_PARAM_BODY_CVV_REQUERID",
     "erroParamBodyClientIdRequired" : "ERRO_PARAM_BODY_CLIENT_ID_REQUERID"
 };
+
+export const msgClient = {
+    "erroCreateClient" : "ERRO_CREATE_CLIENT",
+    "erroParamBodyNameClientRequired" : "ERRO_PARAM_BODY_NAME_CLIENT_REQUERID"
+};

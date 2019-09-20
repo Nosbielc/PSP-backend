@@ -24,16 +24,41 @@ export class FactoryDB{
         console.log("Node_ENV: " + nodeEnv);
         if(!nodeEnv){
             console.log("---------------Ambiente Local");
-        }else if(nodeEnv.indexOf("test") > -1){
+        } else if(nodeEnv.indexOf("test") > -1){
             console.log("---------------Ambiente de Teste");
-        }else if(nodeEnv.indexOf("development") > -1){
+        } else if(nodeEnv.indexOf("development") > -1){
             console.log("---------------Ambiente desenvolvimento!");
-        }else if(nodeEnv.indexOf("production") > -1){
+        } else if(nodeEnv.indexOf("production") > -1){
             console.log("---------------Ambiente de produção!");
             this.host = "mysql785.umbler.com";
             this.port = 3310;
             this.password = "W[5Jf7?yujD5,"
         }
+
+        let hostDBEnv:string = process.env.PSP_HOST_DB_ENV;
+        let portEnv:string = process.env.PSP_PORT_ENV;
+        let databaseEnv:string = process.env.PSP_DATABASE_ENV;
+        let dialectEnv:string = process.env.PSP_DIALECT_ENV;
+        let userNameEnv:string = process.env.PSP_USER_NAME_ENV;
+        let passwordEnv:string = process.env.PSP_PASSWORD_ENV;
+
+        console.log("---------------hostDBEnv -> " + hostDBEnv );
+        console.log("---------------portEnv -> " + portEnv );
+        console.log("---------------databaseEnv -> " + databaseEnv );
+        console.log("---------------dialectEnv -> " + dialectEnv );
+        console.log("---------------userNameEnv -> " + userNameEnv );
+        console.log("---------------passwordEnv -> " + passwordEnv );
+
+        if (hostDBEnv && portEnv && databaseEnv && dialectEnv
+            && userNameEnv && passwordEnv) {
+            this.host = hostDBEnv;
+            this.port = Number(portEnv);
+            this.database = databaseEnv;
+            this.dialect = dialectEnv;
+            this.user = userNameEnv;
+            this.password = passwordEnv;
+        }
+
         this.sequelize =  new Sequelize({
             host: this.host,
             port: this.port,
